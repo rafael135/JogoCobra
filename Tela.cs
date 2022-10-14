@@ -1,45 +1,81 @@
 ﻿using Entidades;
+using JogoCobra.Entidades;
 
 namespace JogoCobra
 {
     internal class Tela
-    {   
+    {
         public Tela()
         {
-            
+
         }
 
         public static void Atualizar(Jogo jogo)
         {
-            List<Fruta> frutas = jogo.Frutas;
+            Fruta fruta = jogo.Fruta;
             Cobra cobra = jogo.Cobra;
 
-            for(int i = 0; i < jogo.Linhas; i++)
+            for (int i = 0; i < jogo.Linhas; i++)
             {
-                for(int j = 0; j < jogo.Colunas; j++)
+                for (int j = 0; j < jogo.Colunas; j++)
                 {
+                    bool existeObj = false;
+
                     Posicao aux = new Posicao(i, j);
-                    if(cobra.Posicao == aux)
+                    if (jogo.Cobra.Posicao.Coluna == aux.Coluna && jogo.Cobra.Posicao.Linha == aux.Linha)
                     {
-                        DesenharObjeto(cobra.ToString(), cobra.Posicao);
+                        existeObj = true;
+                        DesenharObjeto(jogo.Cobra);
                     }
 
-                    foreach(Fruta fruta in frutas)
+                    if (jogo.Fruta.Posicao != null)
                     {
-                        if(fruta.Posicao == aux)
+                        if (jogo.Fruta.Posicao.Linha == aux.Linha && jogo.Fruta.Posicao.Coluna == aux.Coluna)
                         {
-                            DesenharObjeto(fruta.ToString(), aux);
-                        } // Criar superclasse para entidades de cobra e fruta serem compativeis
+                            existeObj = true;
+                            DesenharObjeto(jogo.Fruta);
+                        }
                     }
-
-
+                    if (existeObj == false)
+                    {
+                        ConsoleColor corOriginal = ConsoleColor.Black;
+                        Console.BackgroundColor = ConsoleColor.DarkGray;
+                        Console.Write(" ");
+                        Console.BackgroundColor = corOriginal;
+                    }
                 }
+                Console.WriteLine();
             }
+
         }
 
-        private static void DesenharObjeto(string ch, Posicao posicao)
+
+        private static void DesenharObjeto(ObjInterativo obj)
         {
-            Console.Write(ch);
+            ConsoleColor corBackOriginal = Console.BackgroundColor;
+            ConsoleColor corOriginal = Console.ForegroundColor;
+
+            switch (obj.ToString())
+            {
+                case "*":
+                    ConsoleColor corFruta = ConsoleColor.Red;
+                    Console.BackgroundColor = ConsoleColor.DarkGray;
+                    Console.ForegroundColor = corFruta;
+                    break;
+
+                case "#":
+                    ConsoleColor corCobra = ConsoleColor.Green;
+                    Console.BackgroundColor = ConsoleColor.DarkGray;
+                    Console.ForegroundColor = corCobra;
+                    break;
+
+                default:
+
+                    break;
+            }
+
+            Console.Write(obj.ToString());
+            Console.BackgroundColor = corOriginal;
         }
     }
 }

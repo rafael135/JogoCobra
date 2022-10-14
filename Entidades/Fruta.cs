@@ -1,17 +1,18 @@
-﻿namespace Entidades
-{
-    internal class Fruta
-    {
-        public Posicao Posicao { get; private set; }
+﻿using JogoCobra.Entidades;
 
-        public Fruta()
+namespace Entidades
+{
+    internal class Fruta : ObjInterativo
+    {
+
+        public Fruta(Posicao? posicao = null) : base(posicao)
         {
             
         }
 
-        public Fruta(Posicao posicao)
+        public void RemoverFruta()
         {
-            Posicao = posicao;
+            Posicao = null;
         }
 
         public override string ToString()

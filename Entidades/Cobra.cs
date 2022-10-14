@@ -1,20 +1,23 @@
 ﻿using Entidades.Enums;
+using JogoCobra.Entidades;
 using System.Runtime.CompilerServices;
 
 namespace Entidades
 {
-    internal class Cobra
+    internal class Cobra : ObjInterativo
     {
         public int Tamanho { get; private set; }
-        public Posicao Posicao { get; private set; }
+        public int[,] EspacoOcupado { get; private set; }
         public Direcao Direcao { get; private set; }
         
-        public Cobra(Posicao posicaoInicial)
+        public Cobra(int linhasDisponiveis, int colunasDisponiveis, Posicao posicaoInicial) : base(posicaoInicial)
         {
             Tamanho = 1;
-            Posicao = posicaoInicial;
+            EspacoOcupado = new int[linhasDisponiveis, colunasDisponiveis];
             Direcao = Direcao.Direita;
         }
+
+
 
         public void MudarDirecao(ConsoleKey key)
         {
@@ -42,6 +45,11 @@ namespace Entidades
             }
 
 
+        }
+
+        public void AumentarTamanho()
+        {
+            Tamanho++;
         }
 
         public override string ToString()
