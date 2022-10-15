@@ -28,7 +28,7 @@ namespace JogoCobra
                         DesenharObjeto(jogo.Cobra);
                     }
 
-                    if (jogo.Fruta.Posicao != null)
+                    if (jogo.Fruta != null)
                     {
                         if (jogo.Fruta.Posicao.Linha == aux.Linha && jogo.Fruta.Posicao.Coluna == aux.Coluna)
                         {
@@ -59,13 +59,13 @@ namespace JogoCobra
             {
                 case "*":
                     ConsoleColor corFruta = ConsoleColor.Red;
-                    Console.BackgroundColor = ConsoleColor.DarkGray;
+                    Console.BackgroundColor = ConsoleColor.Red;
                     Console.ForegroundColor = corFruta;
                     break;
 
                 case "#":
                     ConsoleColor corCobra = ConsoleColor.Green;
-                    Console.BackgroundColor = ConsoleColor.DarkGray;
+                    Console.BackgroundColor = ConsoleColor.Green;
                     Console.ForegroundColor = corCobra;
                     break;
 

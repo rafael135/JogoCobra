@@ -5,14 +5,9 @@ namespace Entidades
     internal class Fruta : ObjInterativo
     {
 
-        public Fruta(Posicao? posicao = null) : base(posicao)
+        public Fruta(Posicao posicao) : base(posicao)
         {
             
-        }
-
-        public void RemoverFruta()
-        {
-            Posicao = null;
         }
 
         public override string ToString()

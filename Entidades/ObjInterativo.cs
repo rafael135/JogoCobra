@@ -8,7 +8,7 @@ namespace JogoCobra.Entidades
         public Posicao Posicao { get; set; }
         public Cor Cor { get; private set; } // Não implementado
 
-        public ObjInterativo(Posicao? posicao)
+        public ObjInterativo(Posicao posicao)
         {
             Posicao = posicao;
         }

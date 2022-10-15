@@ -11,7 +11,7 @@ namespace JogoCobra
             Console.BackgroundColor = ConsoleColor.Black;
             Console.ForegroundColor = ConsoleColor.White;
 
-            Jogo jogo = new Jogo(20, 60);
+            Jogo jogo = new Jogo(12, 36);
 
             
             while(jogo.Morreu != true)
